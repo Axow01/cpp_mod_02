@@ -31,10 +31,10 @@ class Fixed {
 		bool operator<=(const Fixed &rhs);
 		bool operator==(const Fixed &rhs);
 		bool operator!=(const Fixed &rhs);
-		Fixed &operator+(const Fixed &rhs);
-		Fixed &operator-(const Fixed &rhs);
-		Fixed &operator*(const Fixed &rhs);
-		Fixed &operator/(const Fixed &rhs);
+		Fixed operator+(const Fixed &rhs);
+		Fixed operator-(const Fixed &rhs);
+		Fixed operator*(const Fixed &rhs);
+		Fixed operator/(const Fixed &rhs);
 		Fixed &operator++();
 		Fixed operator++(int);
 		Fixed &operator--();

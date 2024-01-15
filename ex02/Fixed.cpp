@@ -93,24 +93,32 @@ bool Fixed::operator!=(const Fixed &rhs) {
 	return (false);
 }
 
-Fixed	&Fixed::operator+(const Fixed &rhs) {
-	_fixedPointValue += rhs._fixedPointValue;
-	return (*this);
+Fixed	Fixed::operator+(const Fixed &rhs) {
+	Fixed	tmp;
+	
+	tmp._fixedPointValue = _fixedPointValue + rhs._fixedPointValue;
+	return (tmp);
 }
 
-Fixed	&Fixed::operator-(const Fixed &rhs) {
-	_fixedPointValue -= rhs._fixedPointValue;
-	return (*this);
+Fixed	Fixed::operator-(const Fixed &rhs) {
+	Fixed	tmp;
+	
+	tmp._fixedPointValue = _fixedPointValue - rhs._fixedPointValue;
+	return (tmp);
 }
 
-Fixed	&Fixed::operator*(const Fixed &rhs) {
-	_fixedPointValue *= rhs._fixedPointValue >> _fractionBits;
-	return (*this);
+Fixed	Fixed::operator*(const Fixed &rhs) {
+	Fixed	tmp;
+
+	tmp._fixedPointValue = _fixedPointValue * rhs._fixedPointValue >> _fractionBits;
+	return (tmp);
 }
 
-Fixed	&Fixed::operator/(const Fixed &rhs) {
-	_fixedPointValue /= rhs._fixedPointValue;
-	return (*this);
+Fixed	Fixed::operator/(const Fixed &rhs) {
+	Fixed	tmp;
+
+	tmp._fixedPointValue = _fixedPointValue /= rhs._fixedPointValue >> _fractionBits;
+	return (tmp);
 }
 
 Fixed	&Fixed::operator++() {
