@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:41:47 by mmarcott          #+#    #+#             */
-/*   Updated: 2024/01/14 22:03:08 by mmarcott         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:29:42 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ Fixed::Fixed(void) {
 Fixed::Fixed(const Fixed &other) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
+}
+
+Fixed::Fixed(const int fpn): _fixedPointValue(fpn << _fractionBits) {
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float fpn): _fixedPointValue(fpn * pow(2, _fractionBits)) {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &rhs) {
@@ -42,4 +50,17 @@ int	Fixed::getRawBits(void) {
 void	Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called" << std::endl;
 	_fixedPointValue = raw;
+}
+
+float Fixed::toFloat(void) const {
+	return ((float)_fixedPointValue / (float)(1 << _fractionBits));
+}
+
+int	Fixed::toInt(void) const {
+	return ((_fixedPointValue ^ _fractionBits) >> _fractionBits);
+}
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &ptr) {
+	os << ptr.toFloat();
+	return (os);
 }
