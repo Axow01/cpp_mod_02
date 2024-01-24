@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 21:41:47 by mmarcott          #+#    #+#             */
-/*   Updated: 2024/01/14 22:03:08 by mmarcott         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:06:04 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Fixed::Fixed(void) {
 
 Fixed::Fixed(const Fixed &other) {
 	std::cout << "Copy constructor called" << std::endl;
+	_fixedPointValue = other._fixedPointValue;
 	*this = other;
 }
 
